@@ -1,11 +1,9 @@
 import selector from './home.selector';
-import { Map } from 'immutable';
 
 it('should map state to props', () => {
   const mapStateToProps = selector({
-    counter: Map({
-      count: 3
-    })
+    firebase: {}
   });
-  expect(mapStateToProps.count).toBe(3)
+  expect(typeof mapStateToProps.auth).toBe('object');
+  expect(typeof mapStateToProps.projects).toBe('object')
 });
