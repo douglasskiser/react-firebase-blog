@@ -10,3 +10,5 @@ A React Firebase CMS Application
 
 * yarn or npm i
 * yarn start or npm start
+
+***still under development
