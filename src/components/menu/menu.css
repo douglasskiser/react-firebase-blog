@@ -1,0 +1,14 @@
+.menu-row {
+    margin-top: 1rem;
+}
+
+.logo {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+@media (min-width: 540px) {
+    .logo {
+        font-size: 2rem;
+    }
+}
