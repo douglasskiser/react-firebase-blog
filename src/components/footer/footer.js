@@ -8,7 +8,7 @@ export default props => (
     <Grid.Row color="violet">
       <Grid.Column>
         <div>
-          Copyright yo mama.
+          This is a footer!!!
         </div>
       </Grid.Column>
     </Grid.Row>

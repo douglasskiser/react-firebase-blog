@@ -10,6 +10,7 @@ A React Firebase Blog Application
 
 ### How do I get set up? ###
 
+* add firebase-config.js file to /src directory. this file should export an object with firebase config object
 * yarn or npm i
 * yarn start or npm start
 

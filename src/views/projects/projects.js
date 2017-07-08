@@ -4,14 +4,14 @@ import { compose } from 'ramda';
 import { WithMenu, WithFooter } from '../../hoc';
 import * as CommonActions from '../../store/actions';
 
-const Process = props => (
+const Projects = props => (
   <div className="about">
     <h1>Process</h1>
   </div>
 );
 
 export {
-  Process
+  Projects
 };
 
 export default connect(state => ({}), {
@@ -20,5 +20,5 @@ export default connect(state => ({}), {
   compose(
     WithMenu,
     WithFooter
-  )(Process)
+  )(Projects)
 );

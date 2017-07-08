@@ -5,6 +5,7 @@ import { routerReducer, routerMiddleware } from 'react-router-redux';
 import { firebaseStateReducer } from 'react-redux-firebase';
 import { reactReduxFirebase } from 'react-redux-firebase';
 import reducers from './reducers';
+import firebaseConfig from '../firebase-config';
 
 const history = createHistory();
 
@@ -12,15 +13,6 @@ const finalReducer = combineReducers(Object.assign({}, reducers, {
   router: routerReducer,
   firebase: firebaseStateReducer
 }));
-
-const firebaseConfig = {
-  apiKey: 'AIzaSyALXrM7jsqExgO3_4lph_qVBG_q79tiqf0',
-  authDomain: 'prifolio-6421f.firebaseapp.com',
-  databaseURL: 'https://prifolio-6421f.firebaseio.com',
-  projectId: 'prifolio-6421f',
-  storageBucket: 'prifolio-6421f.appspot.com',
-  messagingSenderId: '538169624299'
-};
 
 const WithReactReduxFirebase = reactReduxFirebase(firebaseConfig, {
   userProfile: 'users'

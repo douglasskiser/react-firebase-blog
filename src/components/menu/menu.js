@@ -10,26 +10,26 @@ const StatelessMenu = ({navigate, history}) => {
   const items = map(item => (
     <Menu.Item {...item}/>
   ), [{
-    name: 'portfolio',
-    active: pathName === '/portfolio',
-    onClick: () => navigate('/portfolio'),
+    name: 'home',
+    active: pathName === '/',
+    onClick: () => navigate('/'),
     key: 1
   }, {
-    name: 'process',
-    active: pathName === '/process',
-    onClick: () => navigate('/process'),
+    name: 'projects',
+    active: pathName === '/projects',
+    onClick: () => navigate('/projects'),
     key: 2
   }, {
-    name: 'About Me',
-    active: pathName === '/about-me',
-    onClick: () => navigate('/about-me'),
+    name: 'contact',
+    active: pathName === '/contact',
+    onClick: () => navigate('/contact'),
     key: 3
   }]);
 
   return (
     <Menu secondary>
       <Menu.Item onClick={() => navigate('/')}>
-        <div className="logo">Prifolio</div>
+        <div className="logo">Folio</div>
       </Menu.Item>
       <Menu.Menu position="right">
         {items}
