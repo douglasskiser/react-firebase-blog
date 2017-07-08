@@ -1,12 +1,12 @@
-# react-firebase-cms
+# react-firebase-blog
 
-[ ![Travis CI status for react-firebase-cms](https://travis-ci.org/douglasskiser/react-firebase-cms.svg?branch=master)](https://travis-ci.org/douglasskiser/react-firebase-cms)
+[ ![Travis CI status for react-firebase-blog](https://travis-ci.org/douglasskiser/react-firebase-blog.svg?branch=master)](https://travis-ci.org/douglasskiser/react-firebase-blog)
 
-A React Firebase CMS Application
+A React Firebase Blog Application
 
 ### What is this repository for? ###
 
-* To provide a react firebase cms application example
+* To provide a react firebase blog application example
 
 ### How do I get set up? ###
 
