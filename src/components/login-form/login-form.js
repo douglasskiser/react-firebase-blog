@@ -1,8 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Button, Form} from 'semantic-ui-react';
+import {Button, Form, Grid} from 'semantic-ui-react';
+import WithState from '../../hoc/with-state';
+import {compose} from 'ramda';
 
-const onSubmit = (e, {firebase, email, password}) => {
+import './login-form.css';
+
+const login = (e, {firebase, email, password}) => {
   e.preventDefault();
   firebase.login({
     email,
@@ -21,29 +25,35 @@ const signUp = (e, {navigate}) => {
   navigate('/sign-up');
 };
 
-const LoginForm = (props) => {
+const LoginForm = props => {
   const {password, setPassword, email, setEmail} = props;
   return !props.auth
     ? (
-      <Form onSubmit={(e) => onSubmit(e, props)}>
-        <Form.Input placeholder="Email"
-                    name="email"
-                    value={email}
-                    onChange={(e, {value}) => setEmail(value)}/>
-        <Form.Input placeholder='Password'
-                    name="password"
-                    type="password"
-                    value={password}
-                    onChange={(e, {value}) => setPassword(value)}/>
-        <Button className="pull-right">
-          Login
-        </Button>
-        <Button type="submit"
-                onClick={e => signUp(e, props)}
-                className="pull-right">
-          Sign-Up
-        </Button>
-      </Form>
+      <Grid.Row centered className="login-form">
+        <Grid.Column>
+          <Form>
+            <Form.Input placeholder="Email"
+                        name="email"
+                        value={email}
+                        onChange={(e, {value}) => setEmail(value)}/>
+            <Form.Input placeholder='Password'
+                        name="password"
+                        type="password"
+                        value={password}
+                        onChange={(e, {value}) => setPassword(value)}/>
+            <Button onClick={(e) => login(e, props)}
+                    color="teal"
+                    className="pull-right">
+              Login
+            </Button>
+            <Button onClick={e => signUp(e, props)}
+                    color="grey"
+                    className="pull-right sign-up-btn">
+              Sign-Up
+            </Button>
+          </Form>
+        </Grid.Column>
+      </Grid.Row>
     )
     : (
       <div>
@@ -62,4 +72,14 @@ LoginForm.propTypes = {
   setPassword: PropTypes.func
 };
 
-export default LoginForm;
+export default compose(
+  WithState([{
+    stateName: 'email',
+    setterName: 'setEmail',
+    initialState: ''
+  }, {
+    stateName: 'password',
+    setterName: 'setPassword',
+    initialState: ''
+  }])
+)(LoginForm);

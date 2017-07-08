@@ -2,27 +2,20 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {compose} from 'ramda';
 import {firebaseConnect, pathToJS} from 'react-redux-firebase';
-import {WithMenu, WithFooter, WithState} from '../../hoc';
-import {Grid, Message, Container} from 'semantic-ui-react';
+import {WithMenu, WithFooter} from '../../hoc';
+import {Grid, Container} from 'semantic-ui-react';
 import * as CommonActions from '../../store/actions';
-import {LoginForm} from '../../components';
+import {LoginForm, AuthError} from '../../components';
 
 const Login = props => (
   <Container>
     <Grid>
-      {!!props.authError && (
-        <Grid.Row>
-          <Grid.Column>
-            <Message negative>
-              <Message.Header>Auth Error</Message.Header>
-              <p>{props.authError.message}</p>
-            </Message>
-          </Grid.Column>
-        </Grid.Row>
-      )}
       <Grid.Row centered>
-        <Grid.Column>
-          <LoginForm {...props}/>
+        <Grid.Column width={10}>
+          <Grid>
+            <AuthError {...props}/>
+            <LoginForm {...props}/>
+          </Grid>
         </Grid.Column>
       </Grid.Row>
     </Grid>
@@ -44,15 +37,6 @@ export default connect(({firebase}) => ({
 })(
   compose(
     WithMenu,
-    WithFooter,
-    WithState([{
-      stateName: 'email',
-      setterName: 'setEmail',
-      initialState: ''
-    }, {
-      stateName: 'password',
-      setterName: 'setPassword',
-      initialState: ''
-    }])
+    WithFooter
   )(LoginWithFirebase)
 );

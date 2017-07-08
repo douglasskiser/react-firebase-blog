@@ -1,33 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Button, Form} from 'semantic-ui-react';
+import {Button, Form, Grid} from 'semantic-ui-react';
 
-const onSubmit = (e, {firebase, email, password}) => {
+const onSubmit = (e, {firebase, email = '', password = ''}) => {
   e.preventDefault();
   firebase.createUser({
     email,
-    password,
-    username: email
+    password
   });
 };
 
 const SignUpForm = props => {
   const {password, setPassword, email, setEmail} = props;
   return (
-    <Form onSubmit={(e) => onSubmit(e, props)}>
-      <Form.Input placeholder="Email"
-                  name="email"
-                  value={email}
-                  onChange={(e, {value}) => setEmail(value)}/>
-      <Form.Input placeholder='Password'
-                  name="password"
-                  type="password"
-                  value={password}
-                  onChange={(e, {value}) => setPassword(value)}/>
-      <Button className="pull-right">
-        Sign-Up
-      </Button>
-    </Form>
+    <Grid.Row centered className="sign-up-form">
+      <Grid.Column>
+        <Form onSubmit={(e) => onSubmit(e, props)}>
+          <Form.Input placeholder="Email"
+                      name="email"
+                      value={email}
+                      onChange={(e, {value}) => setEmail(value)}/>
+          <Form.Input placeholder='Password'
+                      name="password"
+                      type="password"
+                      value={password}
+                      onChange={(e, {value}) => setPassword(value)}/>
+          <Button className="pull-right"
+                  color="grey">
+            Sign-Up
+          </Button>
+        </Form>
+      </Grid.Column>
+    </Grid.Row>
   );
 };
 
